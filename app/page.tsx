@@ -1,38 +1,21 @@
-import { supabase } from "../lib/supabase";
+
 import Sidebar from "../components/Sidebar";
 import HeroTile from "../components/HeroTile";
 import ActivityTile from "../components/ActivityTile";
-import CourseCard from "../components/CourseCard";
 
-export default async function Home() {
-  const { data: courses } = await supabase
-    .from("courses")
-    .select("*");
 
+export default function Home() {
+  
   return (
-    <div className="min-h-screen bg-black text-white flex">
-      <Sidebar />
+    <main className="p-8">
 
-      <main className="flex-1 p-6">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
-          <div className="lg:col-span-2">
-            <HeroTile />
-          </div>
+    
+        <h1 className="text-4xl font-bold">Learning Dashboard</h1>
 
-          <ActivityTile />
-
-          {courses?.map((course) => (
-            <CourseCard
-              key={course.id}
-              title={course.title}
-              progress={course.progress}
-              icon={course.icon_name}
-            />
-          ))}
-
-        </div>
+          <p className="mt-4">Dashboard deployed successfully</p>
+          
       </main>
-    </div>
+  
   );
 }
